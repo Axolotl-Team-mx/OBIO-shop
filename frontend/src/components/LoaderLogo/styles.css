@@ -1,0 +1,17 @@
+.loader-logo {
+  display: block;
+  height: 150px;
+  animation: zoom-loader 2s ease-out infinite;
+}
+
+@keyframes zoom-loader {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.4, 1.4);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
