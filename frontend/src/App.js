@@ -1,6 +1,5 @@
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import StoreRouter from "./routers/StoreRouter";
-import LoaderLogo from "./components/LoaderLogo";
 function App() {
   return (
     <Router>
@@ -11,7 +10,6 @@ function App() {
           render={(props) => <StoreRouter {...props} />}
         />
       </Switch>
-      <LoaderLogo />
     </Router>
   );
 }

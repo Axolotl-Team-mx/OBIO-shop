@@ -1,0 +1,12 @@
+.trending h2 {
+  text-align: center;
+}
+
+.products-trending img {
+  max-height: 50vh;
+}
+
+#home-screen {
+  padding: 0 2rem;
+}
+/*# sourceMappingURL=styles.css.map */
