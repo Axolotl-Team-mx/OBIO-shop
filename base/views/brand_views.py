@@ -23,7 +23,7 @@ def getBrands(request):
 @api_view(['GET'])
 def getBrand(request, pk):
     brand = Brand.objects.get(brandId=pk)
-    serializer = BrandSerializer(brand, many=True)
+    serializer = BrandSerializer(brand, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
@@ -45,20 +45,19 @@ def updateBrand(request, pk):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def createBrand(request):
     try:
         data = request.data
+        print(data)
         brand = Brand.objects.create(
-            
             brandName = data['name'],
             brandDesc = data['description'],
-            
         )
         if data['img']:
             brand.brandPic = request.FILES.get('img')
         brand.save()
-        serializer = BrandSerializer(brand, many=True)
+        serializer = BrandSerializer(brand, many=False)
         return Response(serializer.data)
     except Exception as e:
         print(e)

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import LoaderLogo from "../../../components/LoaderLogo";
 import Message from "../../../components/Message";
+import FormContainer from "../../../components/FormContainer";
 
 import { Form, Button, Container } from "react-bootstrap";
 
@@ -47,7 +48,7 @@ export default function LoginScreen({ history }) {
         {loading ? (
           <LoaderLogo />
         ) : (
-          <Container style={{ marginTop: "10vh" }}>
+          <FormContainer style={{ marginTop: "10vh" }}>
             <h2>Login</h2>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId="user">
@@ -79,7 +80,7 @@ export default function LoginScreen({ history }) {
                 </Message>
               )}
             </Form>
-          </Container>
+          </FormContainer>
         )}
       </main>
     </div>
