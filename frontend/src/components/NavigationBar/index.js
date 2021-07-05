@@ -7,7 +7,6 @@ export default function NavigationBar() {
     <Navbar
       fixed="top"
       collapseOnSelect
-      bg="secondary"
       variant="secondary"
       expand="lg"
     >

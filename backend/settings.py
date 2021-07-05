@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4p15u-y4z*42=sft&=aq7l7w6jv2(*l3&dz(-$ue2e8dw$==e*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost","obioshop.herokuapp.com"]
 
 
 # Application definition
@@ -88,10 +88,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-TEMPLATES = [
+TEMPLATES =  [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,7 +154,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend/build/static'
+]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
+CORS_ALLOW_ALL_ORIGINS = True
+if os.getcwd() == "/app":
+    DEBUG = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
