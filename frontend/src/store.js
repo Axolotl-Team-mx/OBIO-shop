@@ -2,7 +2,11 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const reducer = combineReducers({});
+import { userLoginReducer } from "./reducers/userReducers";
+
+const reducer = combineReducers({
+  userLogin: userLoginReducer,
+});
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
