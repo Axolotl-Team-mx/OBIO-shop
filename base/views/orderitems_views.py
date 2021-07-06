@@ -3,15 +3,15 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Brand
-from base.serializers.brand_serializers import BrandSerializer
+from base.models import Brand, OrderItems
+from base.serializers.brand_serializers import OrderItemsSerializer
 from rest_framework import status
 
 @api_view(['GET']) 
-def getBrands(request):
+def getOrderItems(request):
     try:
-        brands= Brand.objects.all()
-        serializer =  BrandSerializer(brands, many=True)
+        orderitems= OrderItems.objects.all()
+        serializer = OrderItemsSerializer(orderitems, many=True)
         return Response(serializer.data)
     
     except Exception as e:
@@ -20,42 +20,40 @@ def getBrands(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def getBrand(request, pk):
-    brand = Brand.objects.get(brandId=pk)
-    serializer = BrandSerializer(brand, many=False)
+def getOrderItem(request, pk):
+    orderitem = OrderItems.objects.get(brandId=pk)
+    serializer = OrderItemsSerializer(orderitem, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser]) 
-def updateBrand(request, pk):
+def updateOrderItem(request, pk):
     try:
         data=request.data
-        brand=Brand.objects.get(brandId=pk)
-        brand.brandName= data['name']
-        brand.brandDesc=data['description']
-        brand.brandPic=request.FILES.get("img")
-        brand.save()
-        message = {'detail': 'Update brand'}
+        orderitem=OrderItems.objects.get(mprodId=pk)
+        orderitem.mprodCantidad= data['cantidad']
+        orderitem.mcanId=data['mcan']
+        orderitem.prodId= data['prod']
+        orderitem.save()
+        message = {'detail': 'Update orderitem'}
         return Response(message)
     
     except Exception as e:
         print('Error details: ' + ' ' + str(e))
         message = {'detail': 'Something bad happen'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['POST'])
-# @permission_classes([IsAdminUser])
-def createBrand(request):
+    
+ @api_view(['POST'])
+def createOrderItem(request):
     try:
         data = request.data
-        brand = Brand.objects.create(
-            brandName = data['name'],
-            brandDesc = data['description'],
+        orderitem = OrderItems.objects.create(
+            mprodCantidad = data['name'],
+            mcanId = data['mcan'],
+            prodId= data['prod'],
         )
-        if data['img']:
-            brand.brandPic = request.FILES.get('img')
-        brand.save()
-        serializer = BrandSerializer(brand, many=False)
+        orderitem.save()
+        serializer = OrderItemsSerializer(orderitem, many=False)
         return Response(serializer.data)
     except Exception as e:
         print(e)
@@ -64,7 +62,7 @@ def createBrand(request):
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
-def deleteBrand(request, pk):
-    brand= Brand.objects.get(brandId=pk)
-    brand.delete()
-    return Response('Delete brand')
+def deleteOrderItem(request, pk):
+    orderitem= OrderItems.objects.get(mprodId=pk)
+    orderitem.delete()
+    return Response('Delete order item')   

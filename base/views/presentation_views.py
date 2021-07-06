@@ -5,16 +5,16 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
 from base.models import Presentation
-from base.serializers.branch_serializers import BranchSerializer
+from base.serializers.presentation_serializers import BranchSerializer, PresentationSerializer
 
 from rest_framework import status
 
 
 @api_view(['GET'])
-def getPresentations(request, page):
+def getPresentations(request):
     try:
         Presentations = Presentation.objects.all()
-        serializer = BranchSerializer(Presentations, many=True)
+        serializer = PresentationSerializer(Presentations, many=True)
         return Response(serializer.data)
     except Exception as e:
         print(e)
@@ -24,48 +24,40 @@ def getPresentations(request, page):
 @api_view(['GET'])
 def getPresentation(request, pk):
     presentation = Presentation.objects.get(presId=pk)
-    serializer = BranchSerializer(presentation, many=False)
+    serializer = PresentationSerializer(presentation, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
-def updateBranch(request, pk):
+def updatePresentation(request, pk):
     data = request.data
     presentation = Presentation.objects.get(presId=pk)
-
     presentation.presName = data['presId']
-
     presentation.presContNet = data['presContNet']
-
     presentation.presUnit = data['presUnit']
-
     presentation.save()
-
-    serializer = BranchSerializer(presentation, many=False)
+    serializer = PresentationSerializer(presentation, many=False)
     return Response(serializer.data)
 
 @api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
 @permission_classes([IsAdminUser])
 def deletePresentation(request, pk):
     presentation = Presentation.objects.get(presId=pk)
     presentation.delete()
-
     return Response("Presentación eliminada.")
 
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
-@permission_classes([IsAdminUser])
-def createBranch(request):
+def createPresentation(request):
     try:
+        data = request.data
         presentation = Presentation.objects.create(
-            presName='Sample name', # Puede ser nulo
-            presContNet=0,
-            presName='MB'
+            presName= data['Sample name'],
+            presContNet= data['contNet'],
+            presName= data['MB'],
         )
-        print(presentation)
-        serializer = BranchSerializer(presentation, many=False)
+        presentation.save()
+        serializer = PresentationSerializer(presentation, many=False)
         return Response(serializer.data)
 
     except Exception as e:

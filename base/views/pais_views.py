@@ -1,43 +1,41 @@
 from django.shortcuts import render
+from django.template import base
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Orders
-from base.serializers.order_serializers import OrdersSerealizer
+from base.models import Pais
+from base.serializers.order_serializers import PaisSerealizer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-
 @api_view(['GET'])
-def getOrders(request):
+def getPaises(request):
     try:
-        orders = Orders.objects.all()
-        serializer = OrdersSerealizer(orders, many=True)
+        paises = Pais.objects.all()
+        serializer = PaisSerealizer(paises, many=True)
         return Response(serializer.data)
     
     except Exception as e:
         print('Error details: ' + ' ' + str(e))
         message = {'detail': 'Something bad happen'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
+    
 @api_view(['GET'])
-def getOrder(request, pk):
-    order = Orders.objects.get(orderId=pk)
-    serializer = OrdersSerealizer(order, many=False)
+def getPais(request , pk):
+    pais = Pais.objects.get(contryId=pk)
+    serializer = PaisSerealizer(pais, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser])
-def updateOrder(request, pk):
+def updatePais(request, pk):
     try:
         data = request.data
-        order = Orders.objects.get(orderId=pk)
-        order.orderName = data['name']
-        order.orderDate = data['date']
-        order.usrId = data['usr']
-        order.save()
-        message = {'detail': 'Update order'}
+        pais = Pais.objects.get(contryId=pk)
+        pais.contryName = data['name']
+        pais.save()
+        message = {'detail': 'Update contry'}
         return Response(message)
         
     except Exception as e:
@@ -46,16 +44,14 @@ def updateOrder(request, pk):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-def createOrder(request):
+def createPais(request):
     try:
         data =  request.data
-        order = Orders.objects.create(
-            orderName = data['name'],
-            orderDate = data['date'],
-            usrId = data['usr'],
+        pais = Pais.objects.create(
+        contryName = data['name']    
         )
-        order.save()
-        serializer = OrdersSerealizer(order, many=False)
+        pais.save()
+        serializer = PaisSerealizer(order, many=False)
         return Response(serializer.data)
    
     except Exception as e:
@@ -65,8 +61,8 @@ def createOrder(request):
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
-def deleteOrder(request, pk):
-    order = Orders.objects.get(prodId = pk)
-    order.delete()
+def deletePais(request, pk):
+    order = Pais.objects.get(prodId = pk)
+    Pais.delete()
     
-    return Response('Delete order')
+    return Response('Delete contry')

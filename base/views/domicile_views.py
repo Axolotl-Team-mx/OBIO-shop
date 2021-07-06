@@ -3,15 +3,15 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Brand
-from base.serializers.brand_serializers import BrandSerializer
+from base.models import Domicile
+from base.serializers.brand_serializers import DomicileSerializer
 from rest_framework import status
 
 @api_view(['GET']) 
-def getBrands(request):
+def getDomiciles(request):
     try:
-        brands= Brand.objects.all()
-        serializer =  BrandSerializer(brands, many=True)
+        domiciles= Domicile.objects.all()
+        serializer =  DomicileSerializer(domiciles, many=True)
         return Response(serializer.data)
     
     except Exception as e:
@@ -20,22 +20,22 @@ def getBrands(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def getBrand(request, pk):
-    brand = Brand.objects.get(brandId=pk)
-    serializer = BrandSerializer(brand, many=False)
+def getDomicile(request, pk):
+    domicile = Domicile.objects.get(brandId=pk)
+    serializer = DomicileSerializer(brand, many=False)
     return Response(serializer.data)
 
 @api_view(['PUT'])
 @permission_classes([IsAdminUser]) 
-def updateBrand(request, pk):
+def updateDomicile(request, pk):
     try:
         data=request.data
-        brand=Brand.objects.get(brandId=pk)
-        brand.brandName= data['name']
-        brand.brandDesc=data['description']
-        brand.brandPic=request.FILES.get("img")
-        brand.save()
-        message = {'detail': 'Update brand'}
+        domicile=Domicile.objects.get(brandId=pk)
+        domicile.domDomicile= data['domicile']
+        domicile.domPostal =data['postal']
+        domicile.cityId = data['city']
+        domicile.save()
+        message = {'detail': 'Update domicile'}
         return Response(message)
     
     except Exception as e:
@@ -44,27 +44,25 @@ def updateBrand(request, pk):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-# @permission_classes([IsAdminUser])
-def createBrand(request):
+def createDomicile(request):
     try:
         data = request.data
-        brand = Brand.objects.create(
-            brandName = data['name'],
-            brandDesc = data['description'],
+        domicile = Domicile.objects.create(
+            domDomicilio = data['domicilio'],
+            domPostal = data['postal'],
+            cityId = data['city'],
         )
-        if data['img']:
-            brand.brandPic = request.FILES.get('img')
-        brand.save()
-        serializer = BrandSerializer(brand, many=False)
+        domicile.save()
+        serializer = DomicileSerializer(domicile, many=False)
         return Response(serializer.data)
     except Exception as e:
         print(e)
         message = {'detail': 'Something bad happen'}
         return Response(message)
-
+    
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
-def deleteBrand(request, pk):
-    brand= Brand.objects.get(brandId=pk)
-    brand.delete()
-    return Response('Delete brand')
+def deleteDomicile(request, pk):
+    domicile= Domicile.objects.get(brandId=pk)
+    Domicile.delete()
+    return Response('Delete domicile')
