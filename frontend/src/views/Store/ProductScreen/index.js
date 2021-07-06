@@ -82,7 +82,7 @@ export default function ProductScreen({ history, match }) {
             <Zoom>
               <img
               className="image-product"
-                src={`https://res.cloudinary.com/majo-floral-desing/${product?.prodPic}`}
+                src={`https://res.cloudinary.com/jordiespinoza/${product?.prodPic}`}
               />
             </Zoom>
           </Col>

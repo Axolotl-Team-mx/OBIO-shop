@@ -39,7 +39,7 @@ export default function ProductListScreen({ history }) {
     }
   };
   useEffect(() => {
-    if (userInfo?.isAdmin) {
+    if (userInfo?.isAdmin || !userInfo) {
       dispatch(
         callApi(
           `/api/products/getproducts/`,

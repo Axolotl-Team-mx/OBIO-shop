@@ -8,7 +8,7 @@ function Product({ product }) {
     <Card className="my-3 p-3 rounded">
       <Link to="/">
         <Card.Img
-          src={`https://res.cloudinary.com/majo-floral-desing/${product?.prodPic}`}
+          src={`https://res.cloudinary.com/jordiespinoza/${product?.prodPic}`}
         />
       </Link>
       <Card.Body>

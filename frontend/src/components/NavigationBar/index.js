@@ -101,9 +101,9 @@ export default function NavigationBar() {
                 </LinkContainer>
               </>
             ) : (
-              <LinkContainer to="/login/">
+              <Link to="/login/">
                 <i className="fas fa-user"></i> Login
-              </LinkContainer>
+              </Link>
             )}
           </Nav>
         </Navbar.Collapse>

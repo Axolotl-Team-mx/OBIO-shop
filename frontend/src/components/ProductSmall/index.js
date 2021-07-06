@@ -15,7 +15,7 @@ export default function ProductSmall({product}) {
       </div>
       <div className="image-small">
         <img
-          src={`https://res.cloudinary.com/majo-floral-desing/${product?.prodPic}`}
+          src={`https://res.cloudinary.com/jordiespinoza/${product?.prodPic}`}
 
         />
       </div>
