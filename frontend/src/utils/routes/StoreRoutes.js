@@ -1,6 +1,7 @@
 import { lazy } from "react";
 const HomeScreen = lazy(() => import("../../views/Store/HomeScreen"));
 const LoginScreen = lazy(() => import("../../views/Store/LoginScreen"));
+const RegisterScreen = lazy(() => import("../../views/Store/RegisterScreen"));
 const RegisterBrand = lazy(() => import("../../views/Dashboard/RegisterBrand"));
 const RegisterProduct = lazy(() =>
   import("../../views/Dashboard/RegisterProduct")
@@ -24,6 +25,12 @@ const routes = [
     name: "login",
     exact: true,
     component: LoginScreen,
+  },
+  {
+    path: "/register",
+    name: "register",
+    exact: true,
+    component: RegisterScreen,
   },
   {
     path: "/brands/register",

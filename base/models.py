@@ -70,7 +70,10 @@ class Products(models.Model):
     sucId =         models.ForeignKey(Branch, on_delete=models.SET_NULL, null=True) # ¿ Nulo ?v
     marcId =        models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True) # ¿ Nulo ?
     catId =         models.ForeignKey(Categorie, on_delete=models.SET_NULL, null=True) # ¿ Nulo ?
-
+    rating = models.DecimalField(
+        max_digits=7, decimal_places=2, verbose_name="Rating", blank=True, null=True)
+    numReviews = models.IntegerField(
+        null=True, blank=True, default=0, verbose_name="Number of Reviews")
 # |==============================================================================================| #
 # |==| Omití las clases que tiene por defecto 'models', es decir, users, groups y permissions |==| #
 # |==============================================================================================| #

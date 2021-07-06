@@ -33,7 +33,7 @@ export default function NavigationBar() {
           <img height="40" src={logo1} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar1" />
-        <Navbar.Collapse id="navbar1">
+        <Navbar.Collapse id="navbar1" style={{justifyContent: "flex-end"}}>
           <Nav className="me-auto">
             <LinkContainer to="/">
               <Nav.Link>
