@@ -16,10 +16,11 @@ const initialState = {
   sucId: null,
   marcId: null,
   catId: null,
-  img: null,
 };
 export default function RegisterProduct({ history }) {
   const [product, setProduct] = useState(initialState);
+  const [image, setImage] = useState();
+
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -38,7 +39,7 @@ export default function RegisterProduct({ history }) {
     productData.append("sucId", product?.sucId);
     productData.append("marcId", product?.marcId);
     productData.append("catId", product?.catId);
-    productData.append("img", product?.catId);
+    productData.append("img", image);
 
     dispatch(
       callApi(
@@ -127,15 +128,19 @@ export default function RegisterProduct({ history }) {
                   />
                 )}
               </div> */}
+              <Form.Control
+                type="text"
+                placeholder="Ingresa la imagen"
+                value={image}
+                readOnly={true}
+              ></Form.Control>
               <Form.File
                 id="image-file"
                 label="Elegir un archivo"
                 custom
                 onChange={(e) => {
-                  setProduct({
-                    ...product,
-                    ["img"]: e.target.files[0],
-                  });
+                  console.log(e.target.files[0]);
+                  setImage(e.target.files[0]);
                 }}
               ></Form.File>
               {/* {isUploading && <Loader />} */}

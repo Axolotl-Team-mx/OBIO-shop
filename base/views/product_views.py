@@ -100,8 +100,8 @@ def createProduct(request):
             # marcId=data['marc'],
             # catId=data['cat'],
         )
-        if data['img']:
-            product.prodPic = request.FILES.get('img')
+        print(data)
+        product.prodPic = request.FILES.get('img')
         product.save()
         serializer = ProductSerializer(product, many=False)
         return Response(serializer.data)
