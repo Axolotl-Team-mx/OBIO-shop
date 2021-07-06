@@ -62,3 +62,8 @@ def getProduct(request, pk):
         print('Error details: ' + ' ' + str(e))
         message = {'detail': 'Something bad happen'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+#delete
+
+#update
+
+#create

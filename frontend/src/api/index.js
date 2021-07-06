@@ -5,7 +5,7 @@ export const callApi =
   async (dispatch) => {
     const { REQUEST, SUCESS, FAIL } = constants;
     try {
-
+      
       dispatch({ type: REQUEST });
       const { data } = await axios({
         method,

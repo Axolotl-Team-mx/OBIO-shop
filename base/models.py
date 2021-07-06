@@ -66,7 +66,7 @@ class Products(models.Model):
     prodPrice =     models.DecimalField( max_digits=8, decimal_places=2, blank=True, null=True)
     prodDesc =      models.CharField( max_length=1024)
     prodPic =       CloudinaryField('image' )
-    prodRegDate =   models.DateTimeField(auto_now_add=True)
+    # prodRegDate =   models.DateTimeField(auto_now_add=True)
     # presId =        models.ForeignKey(Presentation, on_delete=models.SET_NULL, null=True) # ¿ Nulo ?
     sucId =         models.ForeignKey(Branch, on_delete=models.SET_NULL, null=True) # ¿ Nulo ?v
     marcId =        models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True) # ¿ Nulo ?
