@@ -4,6 +4,19 @@
   src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff") format("woff"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.svg#Gotham") format("svg");
 }
 
+.loading-div {
+  min-height: 60vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .header-page {
   position: relative;
   display: -webkit-box;
@@ -15,7 +28,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  min-height: 60vh;
+  min-height: 70vh;
   background-color: #333;
   padding: 1rem;
   -webkit-box-orient: vertical;
@@ -32,16 +45,20 @@
   right: 0;
   left: 0;
   background-position: top center;
-  background-size: 110% 150%;
+  background-size: 120% 170%;
   background-position: top;
-  background-image: url(https://media.istockphoto.com/photos/white-studio-background-picture-id1040250650?k=6&m=1040250650&s=612x612&w=0&h=Ve0znmMwCbVyo66uIfeSrSYRuHau85oBiVIv1OplATs=);
+  background-image: url(https://res.cloudinary.com/jordiespinoza/image/upload/v1625597308/daniel-fazio-oK9EKfqv8HE-unsplash_f2bwjr.jpg);
   opacity: 0.5;
 }
 
-.header-page h2 {
+.header-page h2, .header-page Button {
   color: #fff;
   font-size: 1.5rem;
   position: relative;
+}
+
+.header-page Button {
+  font-size: 18px;
 }
 
 .categories-colection {

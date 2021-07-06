@@ -8,7 +8,7 @@ export default function Header() {
           Culpa adipisicing ipsum enim ea pariatur <br />
           id mollit fugiat consectetur.
         </h2>
-        <Button variant="secondary">Text</Button>
+        <Button variant="secondary">Ver productos</Button>
       </div>
 
     </>

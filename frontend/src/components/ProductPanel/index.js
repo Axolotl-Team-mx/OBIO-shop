@@ -1,4 +1,5 @@
 import { Image, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./styles.css";
 export default function ProductPanel({ product, children }) {
   return (
@@ -6,10 +7,12 @@ export default function ProductPanel({ product, children }) {
       <Col md={3} xs={12}>
         {product?.prodPic && (
           <div className="d-flex justify-content-center">
-            <Image
-              className="d-block my-4 shadow"
-              src={`https://res.cloudinary.com/majo-floral-desing/${product.prodPic}`}
-            />
+            <Link to={`/products/${product.prodId}`}>
+              <Image
+                className="d-block my-4 shadow"
+                src={`https://res.cloudinary.com/jordiespinoza/${product.prodPic}`}
+              />
+            </Link>
           </div>
         )}
       </Col>

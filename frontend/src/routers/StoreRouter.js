@@ -13,7 +13,21 @@ export default function StoreRouter({ history }) {
     <>
       <ScrollToTop />
       <NavigationBar />
-      <React.Suspense fallback={<LoaderLogo />}>
+      <React.Suspense
+        fallback={
+          <div
+            style={{
+              minHeight: "60vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            className="loading-div"
+          >
+            <LoaderLogo />
+          </div>
+        }
+      >
         <Switch>
           {routes?.map((route, idx) => {
             return route.component ? (
@@ -28,7 +42,7 @@ export default function StoreRouter({ history }) {
           })}
         </Switch>
       </React.Suspense>
-      <Footer/>
+      <Footer />
     </>
   );
 }

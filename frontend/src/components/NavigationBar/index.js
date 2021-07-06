@@ -101,7 +101,7 @@ export default function NavigationBar() {
                 </LinkContainer>
               </>
             ) : (
-              <Link to="/login/">
+              <Link to="/login/" className="text-primary">
                 <i className="fas fa-user"></i> Login
               </Link>
             )}

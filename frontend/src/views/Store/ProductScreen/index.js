@@ -98,8 +98,10 @@ export default function ProductScreen({ history, match }) {
         ["user"]: userInfo?.id,
       });
     }
-  }, [productId, history, userInfo]);
-
+  }, [productId, history, userInfo, successRev]);
+  useEffect(() => {
+    dispatch({ type: actions.PRODUCT_REVIEW_RESET });
+  }, [history]);
   return loadingDetails ? (
     <div style={{ minHeight: "100vh", marginTop: "15vh" }}>
       <Loader />
@@ -143,7 +145,7 @@ export default function ProductScreen({ history, match }) {
               $ {product?.prodPrice}
               MXN
             </h1>
-            <Rating value={product?.rating} color="#f8e825" />
+            <Rating value={product?.rating} color="#d3a007" />
 
             <span>{product?.prodDesc}</span>
           </Col>
@@ -181,9 +183,19 @@ export default function ProductScreen({ history, match }) {
                     // onChange={(e) => setComment(e.target.value)}
                   ></Form.Control>
                 </Form.Group>
-                <Button variant="success" type="submit">
-                  Enviar
-                </Button>
+                {errorRev && (
+                  <Message variant="danger">Ingresa una calificación</Message>
+                )}
+                {successRev && (
+                  <Message variant="success">Review agregada</Message>
+                )}
+                {loadingRev ? (
+                  <Loader />
+                ) : (
+                  <Button variant="success" type="submit">
+                    Enviar
+                  </Button>
+                )}
               </Form>
             ) : (
               <Message variant="info">
@@ -196,7 +208,7 @@ export default function ProductScreen({ history, match }) {
               {product?.reviews?.map((item) => (
                 <ListGroup.Item>
                   <strong>{item.revName}</strong>
-                  <Rating value={item.revRating} color="#f8e825" />
+                  <Rating value={item.revRating} color="#d3a007" />
                   <p>{item.revDate.substring(0, 10)}</p>
                   <p>{item.revComment}</p>
                 </ListGroup.Item>
