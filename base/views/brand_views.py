@@ -44,7 +44,7 @@ def updateBrand(request, pk):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAdminUser])
 def createBrand(request):
     try:
         data = request.data

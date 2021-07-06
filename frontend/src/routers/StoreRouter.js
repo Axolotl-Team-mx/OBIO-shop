@@ -6,6 +6,7 @@ import routes from "../utils/routes/StoreRoutes";
 import NavigationBar from "../components/NavigationBar";
 import ScrollToTop from "../components/ScrollToTop";
 import LoaderLogo from "../components/LoaderLogo";
+import Footer from "../components/Footer";
 
 export default function StoreRouter({ history }) {
   return (
@@ -27,6 +28,7 @@ export default function StoreRouter({ history }) {
           })}
         </Switch>
       </React.Suspense>
+      <Footer/>
     </>
   );
 }
