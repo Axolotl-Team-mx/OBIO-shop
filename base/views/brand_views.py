@@ -5,7 +5,6 @@ from rest_framework.response import Response
 
 from base.models import Brand
 from base.serializers.brand_serializers import BrandSerializer
-
 from rest_framework import status
 
 @api_view(['GET']) 
@@ -49,7 +48,6 @@ def updateBrand(request, pk):
 def createBrand(request):
     try:
         data = request.data
-        print(data)
         brand = Brand.objects.create(
             brandName = data['name'],
             brandDesc = data['description'],
