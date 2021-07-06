@@ -17,19 +17,19 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    reviews = serializers.SerializerMethodField(read_only=True)
+    # reviews = serializers.SerializerMethodField(read_only=True)
     branch = serializers.SerializerMethodField(read_only=True)
-    presentation = serializers.SerializerMethodField(read_only=True)
+    # presentation = serializers.SerializerMethodField(read_only=True)
     brand = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Products
         fields = '__all__'
 
-    def get_reviews(self, obj):
-        reviews = obj.review_set.all()
-        serializer = ReviewSerializer(reviews, many=True)
-        return serializer.data
+    # def get_reviews(self, obj):
+    #     reviews = obj.review_set.all()
+    #     serializer = ReviewSerializer(reviews, many=True)
+    #     return serializer.data
 
     def get_branch(self, obj):
         branch = obj.sucId
