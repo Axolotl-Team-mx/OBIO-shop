@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-4p15u-y4z*42=sft&=aq7l7w6jv2(*l3&dz(-$ue2e8dw$==e*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost","obioshop.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "obioshop.herokuapp.com"]
 
 
 # Application definition
@@ -88,7 +88,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 
-TEMPLATES =  [
+TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
@@ -112,9 +112,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'apiObio',
+        'USER': 'apiObio',
+        'PASSWORD': 'uD*5QDK%Z84XUOct',
+        'HOST': 'the.axolotlteam.com',
+        'PORT': '3306',
     }
+
 }
 
 
@@ -159,7 +164,6 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-CORS_ALLOW_ALL_ORIGINS = True
 if os.getcwd() == "/app":
     DEBUG = False
 
@@ -167,10 +171,10 @@ if os.getcwd() == "/app":
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ALLOW_ALL_ORIGINS = True
 cloudinary.config(
     cloud_name='majo-floral-desing',
     api_key='476376922929984',
     api_secret='IpOUTkgvxVQDfXCMvs2Uhy4NFsw',
     secure=True,
 )
+CORS_ALLOW_ALL_ORIGINS = True
