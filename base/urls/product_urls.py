@@ -2,7 +2,7 @@ from django.urls import path
 from base.views import product_views as views
 urlpatterns = [
      path('createproduct/',views.createProduct, name='create-product'),
-     path('getproducts/<str:query>/<str:cat>/<str:page>/<str:order>/', views.getProducts,
+     path('getproducts/', views.getProducts,
          name='get-products'),
      path('getproduct/<str:pk>/', views.getProduct,
          name='get-product'),

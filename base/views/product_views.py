@@ -17,40 +17,11 @@ from datetime import date
 
 
 @api_view(['GET'])
-def getProducts(request, cat, query, page, order):
+def getProducts(request):
     try:
-        if query == 'all':
-            if cat == "all":
-                if order == "Max":
-                    products = Products.objects.order_by("-prodPrice")
-                elif order == "Min":
-                    products = Products.objects.order_by("prodPrice")
-                else:
-                    products = Products.objects.all()
-                paginator = Paginator(products, 8)
-                products = paginator.page(page)
-                serializer = ProductSerializer(products, many=True)
-                return Response({"products": serializer.data, 'pages': paginator.num_pages})
-            else:
-                if order == "Max":
-                    products = Products.objects.filter(
-                        catId=cat).order_by("-prodPrice")
-                elif order == "Min":
-                    products = Products.objects.filter(
-                        catId=cat).order_by("prodPrice")
-                else:
-                    products = Products.objects.filter(catId=cat)
-                paginator = Paginator(products, 8)
-                products = paginator.page(page)
-                serializer = ProductSerializer(products, many=True)
-                return Response({"products": serializer.data, 'pages': paginator.num_pages})
-        else:
-            products = Products.objects.filter(name__icontains=query)
-            paginator = Paginator(products, 8)
-            products = paginator.page(page)
-            serializer = ProductSerializer(products, many=True)
-            return Response({"products": serializer.data, 'pages': paginator.num_pages})
-
+        product = Products.objects.all()
+        serializer = ProductSerializer(product, many=True)
+        return Response(serializer.data)
     except Exception as e:
         print('Error details: ' + ' ' + str(e))
         message = {'detail': 'Something bad happen'}

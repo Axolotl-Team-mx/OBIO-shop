@@ -172,9 +172,9 @@ if os.getcwd() == "/app":
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 cloudinary.config(
-    cloud_name='majo-floral-desing',
-    api_key='476376922929984',
-    api_secret='IpOUTkgvxVQDfXCMvs2Uhy4NFsw',
+    cloud_name="jordiespinoza",
+    api_key="742441269294759",
+    api_secret="4V-aSjAYC_Ve3LNbF8Q0rt1eowg",
     secure=True,
 )
 CORS_ALLOW_ALL_ORIGINS = True

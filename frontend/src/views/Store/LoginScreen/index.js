@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import LoaderLogo from "../../../components/LoaderLogo";
+import Loader from "../../../components/Loader";
 import Message from "../../../components/Message";
 import FormContainer from "../../../components/FormContainer";
 
@@ -34,19 +34,15 @@ export default function LoginScreen({ history }) {
     );
   };
 
-  // useEffect(() => {
-  //   if (!userInfo) {
-
-  //   }
-
-  //   if (userInfo) history.push("/");
-  // }, [history, userInfo]);
+  useEffect(() => {
+    if (userInfo) history.push("/");
+  }, [history, userInfo]);
 
   return (
     <div style={{ marginTop: "10vh" }}>
       <main>
         {loading ? (
-          <LoaderLogo />
+          <Loader />
         ) : (
           <FormContainer style={{ marginTop: "10vh" }}>
             <h2>Login</h2>

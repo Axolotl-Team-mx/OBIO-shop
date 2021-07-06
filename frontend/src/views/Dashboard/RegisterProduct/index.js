@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Image } from "react-bootstrap";
 import FormContainer from "../../../components/FormContainer";
 
-import LoaderLogo from "../../../components/LoaderLogo";
+import Loader from "../../../components/Loader";
 import Message from "../../../components/Message";
 
 import { actions } from "../../../constants/productConstants";
@@ -30,6 +30,8 @@ export default function RegisterProduct({ history }) {
       [event.target.name]: event.target.value,
     });
   };
+  const productRegister = useSelector((state) => state.productRegister);
+  const { loading, success, error } = productRegister;
   const submitHandler = (e) => {
     e.preventDefault();
     const productData = new FormData();
@@ -56,6 +58,14 @@ export default function RegisterProduct({ history }) {
       )
     );
   };
+  useEffect(() => {
+    if (success) {
+      dispatch({
+        type: actions.PRODUCT_CREATE_RESET,
+      });
+      history.push("/");
+    }
+  }, [success]);
   return (
     <div style={{ marginTop: "10vh" }}>
       <>
@@ -145,10 +155,14 @@ export default function RegisterProduct({ history }) {
               ></Form.File>
               {/* {isUploading && <Loader />} */}
             </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Subir
-            </Button>
+            {error && <Message variant="danger">{error}</Message>}
+            {loading ? (
+              <Loader />
+            ) : (
+              <Button variant="primary" type="submit">
+                Subir
+              </Button>
+            )}
           </Form>
         </FormContainer>
       </>

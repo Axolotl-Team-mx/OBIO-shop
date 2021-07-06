@@ -10,14 +10,26 @@ import {
   brandRegisterReducer,
   brandUpdateReducer,
 } from "./reducers/brandReducers";
+import {
+  productDeleteReducer,
+  productDetailsReducer,
+  productListReducer,
+  productRegisterReducer,
+  productUpdateReducer,
+} from "./reducers/productReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   brandDelete: brandDeleteReducer,
-  brandDetails:brandDetailsReducer,
-  brandUpdate:brandUpdateReducer,
-  brandList:brandListReducer,
-  brandRegister:brandRegisterReducer,
+  brandDetails: brandDetailsReducer,
+  brandUpdate: brandUpdateReducer,
+  brandList: brandListReducer,
+  brandRegister: brandRegisterReducer,
+  productRegister: productRegisterReducer,
+  productDelete:productDeleteReducer,
+  productList:productListReducer,
+  productUpdate:productUpdateReducer,
+  productDetails:productDetailsReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")
@@ -31,7 +43,6 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
-
   },
   userLogin: { userInfo: userInfoFromStorage },
 };
