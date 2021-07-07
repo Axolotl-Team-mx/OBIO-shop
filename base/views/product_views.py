@@ -109,6 +109,7 @@ def createProductReview(request, pk):
         return Response(content, status=status.HTTP_400_BAD_REQUEST)
     # 3 - Create Review
     else:
+        print(data)
         review = Reviews.objects.create(
             usrId=user,
             prodId=product,

@@ -97,7 +97,7 @@ export default function RegisterScreen({ history }) {
                 </Link>
               </span>
               <Button className="mb-2" type="submit" variant="primary">
-                Iniciar sesión
+                Registrarme
               </Button>
               {error && (
                 <Message variant="danger" style={{ marginTop: "25px" }}>

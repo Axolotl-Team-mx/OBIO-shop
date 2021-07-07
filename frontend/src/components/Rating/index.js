@@ -59,7 +59,7 @@ function Rating({ value, text, color }) {
         <i
           style={{ color }}
           className={
-            value >= 4
+            value >= 5
               ? "fas fa-star"
               : value >= 4.5
                 ? "fas fa-star-half-alt"

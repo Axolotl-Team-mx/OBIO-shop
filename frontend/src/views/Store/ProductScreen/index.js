@@ -157,7 +157,7 @@ export default function ProductScreen({ history, match }) {
               target="_blank"
             >
               <button type="button" class="btn btn-facebook btn-lg">
-                <i class="fab fa-facebook-f"></i> Share on Facebook
+                <i class="fab fa-facebook-f"></i> Compartir en Facebook
               </button>
             </a>
             <span>{product?.prodDesc}</span>
