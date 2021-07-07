@@ -50,7 +50,7 @@ export default function HomeScreen({ history }) {
             <Row className="products-trending">
               {products?.map(
                 (product) =>
-                  product.rating >= 3.0 && (
+                  product.rating == 5 && (
                     <Col md={3}>
                       <Product product={product} />
                     </Col>
