@@ -14,7 +14,7 @@ import {
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
-import { FacebookIcon } from 'react-share'
+import { FacebookIcon } from "react-share";
 
 import Rating from "../../../components/Rating";
 
@@ -152,11 +152,18 @@ export default function ProductScreen({ history, match }) {
               MXN
             </h1>
             <Rating value={product?.rating} color="#d3a007" />
-
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?s=100&p[url]=https://obioshop.herokuapp.com/#/products/${productId}&p[images][0]=&p[title]=Title%20Goes%20Here&p[summary]=Description%20goes%20here!`}
+              target="_blank"
+            >
+              <button type="button" class="btn btn-facebook btn-lg">
+                <i class="fab fa-facebook-f"></i> Share on Facebook
+              </button>
+            </a>
             <span>{product?.prodDesc}</span>
             {/* <br/>
             <FacebookIcon /> */}
-            <br/>
+            <br />
             <Button
               variant="success"
               type="button"

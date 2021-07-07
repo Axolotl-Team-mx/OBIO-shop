@@ -25,9 +25,6 @@ export default function Footer() {
               <Link to="/">Inicio</Link>
             </p>
             <p>
-              <Link to="/products/">Catálogo</Link>
-            </p>
-            <p>
               <Link to="/login">Iniciar sesión</Link>
             </p>
           </div>
