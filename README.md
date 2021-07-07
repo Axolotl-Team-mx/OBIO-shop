@@ -65,7 +65,7 @@ Conjunto de herramientas que nos ayudaron a crear un API necesaria para la plata
 
 
 <p align="center">
-  <img src="./README/Logos/figma.png " width = "150"/>
+  <img src="./README/Logos/figma.png" width = "150"/>
   <h2 style="text-align: center;">
     Figma</h2>
 </p>
