@@ -111,6 +111,7 @@ export default function CartScreen({ match, location, history }) {
     <Row style={{ minHeight: "80vh", overflowX: "hidden" }}>
       <Col md={6} className="p-5">
         <h3>Ingresa tus datos de envío</h3>
+        <span className="text-info">Compra más de $500.00 MXN y te regalamos el envío</span>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="country">
             <Form.Label>País</Form.Label>
@@ -220,7 +221,7 @@ export default function CartScreen({ match, location, history }) {
                         {product?.prodName}
                       </Link>
                     </Col>
-                    <Col xl={2}>${product?.prodPrice} </Col>
+                    <Col xl={2}>${product?.prodPrice} MXN</Col>
                     <Col xl={3}>
                       <Form.Group>
                         <Form.Label>Unidades ({product.qty})</Form.Label>

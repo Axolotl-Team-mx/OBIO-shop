@@ -31,28 +31,32 @@ export default function NavigationBar() {
       className="text-warning"
       style={{ fontWeight: "bold" }}
     >
-      <Container>
+      <Container >
         <Navbar.Brand href="/">
           <img height="40" src={logo1} />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbar1" />
-        <Navbar.Collapse id="navbar1" style={{ justifyContent: "flex-end" }}>
-          <Form onSubmit={(e) => e.preventDefault()} className="d-flex">
+        <Navbar.Toggle aria-controls="navbar1"  />
+        <Navbar.Collapse id="navbar1 " style={{justifyContent: "space-between"}}>
+          <Form
+            onSubmit={(e) => e.preventDefault()}
+            className="d-flex"
+
+          >
             <FormControl
               type="search"
-              placeholder="Busca un articulo"
+              placeholder="Busca un producto"
               className="mr-3"
               aria-label="Search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             ></FormControl>
             <LinkContainer to={`/searchproducts/${search}/`}>
-              <Button variant="warning">
-                <i class="fas fa-search"></i>
+              <Button variant="success">
+                <i class="fas fa-search" style={{ color: "#fff" }}></i>
               </Button>
             </LinkContainer>
           </Form>
-          <Nav className="me-auto">
+          <Nav className="me-auto" >
             <LinkContainer to="/">
               <Nav.Link>
                 <i class="fas fa-home"></i>Inicio
@@ -64,8 +68,6 @@ export default function NavigationBar() {
                 <i class="fas fa-shopping-basket"></i> Tienda
               </Nav.Link>
             </LinkContainer>
-          </Nav>
-          <Nav>
             {userInfo ? (
               <>
                 <NavDropdown title="Cuenta">

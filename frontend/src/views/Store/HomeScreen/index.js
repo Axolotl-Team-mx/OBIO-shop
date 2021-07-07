@@ -49,7 +49,7 @@ export default function HomeScreen({ history }) {
             <h2>Productos Trending</h2>
             <Row className="products-trending">
               {products?.map(
-                (product) => 
+                (product) =>
                   product.rating == 5 && (
                     <Col md={3}>
                       <Product product={product} />
@@ -63,12 +63,16 @@ export default function HomeScreen({ history }) {
           <CategoriesCollection /> */}
           <hr />
           <div className="text-center py-5 px-5 bg-light">
-            <h2>OBIO</h2>
             <Row>
               <Col
                 lg={6}
+                style={{flexDirection: "column"}}
                 className="map-info h-100 d-flex justify-content-center align-items-center"
               >
+                <img
+                  height="200"
+                  src="https://res.cloudinary.com/jordiespinoza/image/upload/v1625686589/OBIO-LOGO-B_f3mmfa.png"
+                />
                 <span className="p-5 d-block">
                   OBIO es fruto del esfuerzo, creatividad y compromiso de
                   comunidades, cooperativas y organizaciones de pequeños
@@ -105,7 +109,6 @@ export default function HomeScreen({ history }) {
             </Row>
           </div>
           <div className="text-center py-5 px-5 bg-light">
-            <h2>Objetivo</h2>
             <Row>
               <Col lg={6}>
                 <img
@@ -118,6 +121,7 @@ export default function HomeScreen({ history }) {
                 lg={6}
                 className="map-info flex-column h-100 d-flex justify-content-center align-items-center"
               >
+                <h2>Objetivo</h2>
                 <span className="p-5 d-block">
                   Muchos queremos salvar al mundo, pero no sabemos cómo.
                   Nuestros recursos se agotan lentamente y parece que no podemos
