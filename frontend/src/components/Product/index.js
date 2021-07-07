@@ -41,7 +41,7 @@ function Product({ product }) {
           </div>
         </Card.Text>
 
-        <Card.Text as="h3">$ {product?.prodPrice}</Card.Text>
+        <Card.Text as="h3">$ {product?.prodPrice} MXN</Card.Text>
         <div>
           <Button
             variant="success"

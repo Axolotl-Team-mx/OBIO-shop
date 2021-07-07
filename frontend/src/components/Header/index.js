@@ -7,7 +7,7 @@ export default function Header() {
       <div className="header-page">
         <h1>Produciendo un mejor futuro</h1>
         <Link to="/products">
-          <Button variant="secondary">Ver productos</Button>
+          <Button variant="outline-secondary">Ver productos</Button>
         </Link>
       </div>
     </>

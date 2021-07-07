@@ -12,6 +12,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import status
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import date
+from django.db.models import Q
 
 # Products
 
@@ -28,7 +29,24 @@ def getProducts(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
+def search(request, querie):
+    try:
+
+        if querie == "all":
+            products = Products.objects.all()
+        else:
+            products = Products.objects.filter(
+                Q(prodName__icontains=querie)| Q(prodDesc__icontains=querie))
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        print('Error details: ' + ' ' + str(e))
+        message = {'detail': 'Something bad happen'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+@ api_view(['GET'])
 def getProduct(request, pk):
     try:
         product = Products.objects.get(prodId=pk)
@@ -40,8 +58,8 @@ def getProduct(request, pk):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['PUT'])
-@permission_classes([IsAdminUser])
+@ api_view(['PUT'])
+@ permission_classes([IsAdminUser])
 def updateProduct(request, pk):
     try:
         data = request.data
@@ -59,7 +77,7 @@ def updateProduct(request, pk):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['POST'])
+@ api_view(['POST'])
 def createProduct(request):
     try:
         data = request.data
@@ -82,8 +100,8 @@ def createProduct(request):
         return Response(message)
 
 
-@api_view(['DELETE'])
-@permission_classes([IsAdminUser])
+@ api_view(['DELETE'])
+@ permission_classes([IsAdminUser])
 def deleteProduct(request, pk):
     product = Products.objects.get(prodId=pk)
     product.delete()
@@ -91,8 +109,8 @@ def deleteProduct(request, pk):
     return Response('Delete product')
 
 
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@ api_view(['POST'])
+@ permission_classes([IsAuthenticated])
 def createProductReview(request, pk):
     product = Products.objects.get(prodId=pk)
     data = request.data

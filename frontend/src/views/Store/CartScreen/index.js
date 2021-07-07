@@ -27,6 +27,7 @@ const initialState = {
   zipcode: "",
   items: [],
 };
+const qtys = [1, 2, 3, 4, 5, 6, 7, 8];
 export default function CartScreen({ match, location, history }) {
   let productId = match.params.id;
   let qty = location.search ? Number(location.search.split("=")[1]) : 1;
@@ -92,7 +93,7 @@ export default function CartScreen({ match, location, history }) {
   const successPaymentHandler = (paymentResult) => {
     dispatch({ type: actions.CART_CLEAR_ITEMS });
     localStorage.removeItem("cartItems");
-    history.push("/")
+    history.push("/");
   };
   useEffect(() => {
     // if (successOrder) {
@@ -173,9 +174,18 @@ export default function CartScreen({ match, location, history }) {
           ) : (
             <PayPalButton
               currency="MXN"
-              amount={cartItems
-                .reduce((acc, product) => acc + Number(product.prodPrice), 0)
-                .toFixed(2)}
+              amount={
+                cartItems.reduce(
+                  (acc, product) => acc + product.qty * product.prodPrice,
+                  0
+                ) +
+                (cartItems.reduce(
+                  (acc, product) => acc + product.qty * product.prodPrice,
+                  0
+                ) *
+                  20) /
+                  100
+              }
               onSuccess={successPaymentHandler}
             />
           )}
@@ -213,22 +223,19 @@ export default function CartScreen({ match, location, history }) {
                     <Col xl={2}>${product?.prodPrice} </Col>
                     <Col xl={3}>
                       <Form.Group>
-                        <Form.Label>Unidades</Form.Label>
+                        <Form.Label>Unidades ({product.qty})</Form.Label>
                         <Form.Control
                           as="select"
-                          value={1}
+                          value={product?.qty}
                           onChange={(e) =>
                             dispatch(
-                              addToCart(
-                                product?.product,
-                                Number(e.target.value)
-                              )
+                              addToCart(product?.prodId, Number(e.target.value))
                             )
                           }
                         >
-                          {[...Array(product?.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
+                          {qtys.map((x) => (
+                            <option key={x} value={x}>
+                              {x}
                             </option>
                           ))}
                         </Form.Control>
@@ -249,15 +256,42 @@ export default function CartScreen({ match, location, history }) {
             </ListGroup>
             <Card className="mt-4 p-3">
               <ListGroup variant="flush">
-                <h5>
-                  Total ({cartItems.reduce((acc, product) => acc + 1, 0)})
-                  productos <br />$
+                <h6>
+                  Costo de envío <br />
                   {cartItems
                     .reduce(
-                      (acc, product) => acc + Number(product.prodPrice),
+                      (acc, product) => acc + product.qty * product.prodPrice,
                       0
                     )
-                    .toFixed(2)}
+                    .toFixed(2) > 500
+                    ? "Envio gratis"
+                    : `$ ${
+                        (cartItems
+                          .reduce(
+                            (acc, product) =>
+                              acc + product.qty * product.prodPrice,
+                            0
+                          )
+                          .toFixed(2) *
+                          20) /
+                        100
+                      } MXN`}
+                </h6>
+                <h5>
+                  Total (
+                  {cartItems.reduce((acc, product) => acc + product.qty, 0)})
+                  productos <br />$
+                  {cartItems.reduce(
+                    (acc, product) => acc + product.qty * product.prodPrice,
+                    0
+                  ) +
+                    (cartItems.reduce(
+                      (acc, product) => acc + product.qty * product.prodPrice,
+                      0
+                    ) *
+                      20) /
+                      100}
+                  MXN
                 </h5>
               </ListGroup>
             </Card>

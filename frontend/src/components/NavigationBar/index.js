@@ -17,6 +17,7 @@ import "./styles.css";
 import { actions } from "../../constants/userConstants";
 export default function NavigationBar() {
   const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const cart = useSelector((state) => state.cart);
@@ -35,7 +36,22 @@ export default function NavigationBar() {
           <img height="40" src={logo1} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar1" />
-        <Navbar.Collapse id="navbar1" style={{justifyContent: "flex-end"}}>
+        <Navbar.Collapse id="navbar1" style={{ justifyContent: "flex-end" }}>
+          <Form onSubmit={(e) => e.preventDefault()} className="d-flex">
+            <FormControl
+              type="search"
+              placeholder="Busca un articulo"
+              className="mr-3"
+              aria-label="Search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            ></FormControl>
+            <LinkContainer to={`/searchproducts/${search}/`}>
+              <Button variant="warning">
+                <i class="fas fa-search"></i>
+              </Button>
+            </LinkContainer>
+          </Form>
           <Nav className="me-auto">
             <LinkContainer to="/">
               <Nav.Link>
@@ -50,27 +66,12 @@ export default function NavigationBar() {
             </LinkContainer>
           </Nav>
           <Nav>
-            <Form onSubmit={(e) => e.preventDefault()} className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Busca un articulo"
-                className="mr-3"
-                aria-label="Search"
-                // value={search}
-                // onChange={(e)=>setSearch(e.target.value)}
-              ></FormControl>
-              <LinkContainer to={`/searchproducts/`}>
-                <Button variant="warning">
-                  <i class="fas fa-search"></i>
-                </Button>
-              </LinkContainer>
-            </Form>
             {userInfo ? (
               <>
                 <NavDropdown title="Cuenta">
-                  <LinkContainer to="/profile">
+                  {/* <LinkContainer to="/profile">
                     <NavDropdown.Item>Perfil</NavDropdown.Item>
-                  </LinkContainer>
+                  </LinkContainer> */}
                   <NavDropdown.Item
                     onClick={() => dispatch({ type: actions.USER_LOGOUT })}
                   >

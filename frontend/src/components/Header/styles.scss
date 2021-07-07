@@ -12,6 +12,7 @@
     url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.svg#Gotham")
       format("svg");
 }
+$image: url(https://images.unsplash.com/photo-1618775293437-91b843a7bcc6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1834&q=80);
 .loading-div {
   min-height: 60vh;
   display: flex;
@@ -24,10 +25,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 70vh;
+  min-height: 55vh;
   background-color: #333;
   padding: 1rem;
   flex-direction: column;
+  margin: 0 4rem;
   &:before {
     content: "";
     position: absolute;
@@ -35,11 +37,11 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-position: top center;
-    background-size: 120% 170%;
+    background-position: top;
+    background-size: 100% 300%;
     background-position: center;
-    background-image: url(https://res.cloudinary.com/jordiespinoza/image/upload/v1625620516/pat-whelen-KgaoJlk7cp8-unsplash_tro7ep.jpg);
-    opacity: 0.5;
+    background-image: $image;
+    opacity: 0.6;
   }
   h2,
   h1,
@@ -82,5 +84,10 @@
         height: 100%;
       }
     }
+  }
+}
+@media(max-width:850px){
+  .header-page{
+    margin: 0;
   }
 }

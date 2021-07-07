@@ -16,15 +16,15 @@ export default function ProductSmall({ product }) {
             color={"#d3a007"}
           />
         </div>
-        <span>$ {product?.prodPrice}</span>
+        <span>$ {product?.prodPrice} MXN</span>
         <br />
-        <Link to={`/products/${product.prodId}`}>
+        <Link to={`/products/${product?.prodId}`}>
           <Button variant="primary">Ver producto</Button>
         </Link>
       </div>
       <div className="image-small">
         <img
-          src={`https://res.cloudinary.com/jordiespinoza/${product?.prodPic}`}
+          src={`https://res.cloudinary.com/jordiespinoza/${product.prodPic}`}
         />
       </div>
     </div>

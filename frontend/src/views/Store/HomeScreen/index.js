@@ -49,7 +49,7 @@ export default function HomeScreen({ history }) {
             <h2>Productos Trending</h2>
             <Row className="products-trending">
               {products?.map(
-                (product) =>
+                (product) => 
                   product.rating == 5 && (
                     <Col md={3}>
                       <Product product={product} />

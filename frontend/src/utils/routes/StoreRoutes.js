@@ -7,15 +7,10 @@ const RegisterBrand = lazy(() => import("../../views/Dashboard/RegisterBrand"));
 const RegisterProduct = lazy(() =>
   import("../../views/Dashboard/RegisterProduct")
 );
-const CartScreen = lazy(() =>
-  import("../../views/Store/CartScreen")
-);
-const ProductsList = lazy(() =>
-  import("../../views/Dashboard/ProductsList")
-);
-const ProductScreen = lazy(() =>
-  import("../../views/Store/ProductScreen")
-);
+const CartScreen = lazy(() => import("../../views/Store/CartScreen"));
+const ProductsList = lazy(() => import("../../views/Dashboard/ProductsList"));
+const ProductScreen = lazy(() => import("../../views/Store/ProductScreen"));
+const SearchScreen = lazy(() => import("../../views/Store/SearchScreen"));
 
 const routes = [
   {
@@ -71,6 +66,12 @@ const routes = [
     name: "cart",
     exact: true,
     component: CartScreen,
+  },
+  {
+    path: "/searchproducts/:search?",
+    name: "search",
+    exact: true,
+    component: SearchScreen,
   },
 ];
 

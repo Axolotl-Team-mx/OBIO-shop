@@ -27,6 +27,7 @@ import { callApi } from "../../../api";
 import { actions } from "../../../constants/productConstants";
 
 import "./styles.css";
+const qtys = [1, 2, 3, 4, 5, 6, 7, 8];
 const initialState = {
   name: "",
   comment: "",
@@ -36,6 +37,7 @@ const initialState = {
 export default function ProductScreen({ history, match }) {
   const productId = match.params.id;
   const dispatch = useDispatch();
+  const [qty, setQty] = useState(1);
 
   const [rating, setRating] = useState(initialState);
 
@@ -48,7 +50,7 @@ export default function ProductScreen({ history, match }) {
   } = productDetails;
   const addToCartHandler = (e) => {
     userInfo
-      ? history.push(`/cart/${product.prodId}?qty=${1}`)
+      ? history.push(`/cart/${product.prodId}?qty=${qty}`)
       : history.push("/login");
   };
   const userLogin = useSelector((state) => state.userLogin);
@@ -164,6 +166,22 @@ export default function ProductScreen({ history, match }) {
             {/* <br/>
             <FacebookIcon /> */}
             <br />
+            <br />
+            <h6>
+              Cantidad a comprar <i class="fas fa-shopping-basket"></i>
+            </h6>
+            <Form.Control
+              as="select"
+              className="mb-3"
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+            >
+              {qtys.map((x) => (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ))}
+            </Form.Control>
             <Button
               variant="success"
               type="button"
