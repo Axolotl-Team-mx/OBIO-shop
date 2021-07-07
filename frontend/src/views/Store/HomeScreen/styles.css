@@ -9,4 +9,39 @@
 #home-screen {
   padding: 0 2rem;
 }
+
+.img {
+  display: block;
+  width: 100%;
+}
+
+.map-info {
+  min-height: 550px;
+}
+
+.myspan {
+  display: block;
+  min-height: 125px;
+}
+
+.map-info span {
+  font-size: 19px;
+}
+
+@media (max-width: 1000px) {
+  .map-info {
+    min-height: 100px;
+  }
+  .img-home {
+    height: 350px;
+    margin: 0 auto;
+    margin-bottom: 40px !important;
+    width: 60%;
+  }
+  .img-home-2 {
+    height: 450px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=styles.css.map */

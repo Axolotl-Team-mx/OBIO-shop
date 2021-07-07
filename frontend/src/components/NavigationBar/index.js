@@ -19,6 +19,8 @@ export default function NavigationBar() {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
   return (
     <Navbar
       sticky="top"
@@ -94,9 +96,9 @@ export default function NavigationBar() {
                 <LinkContainer to="/cart">
                   <Nav.Link>
                     <i className="fas fa-shopping-cart"></i>
-                    {/* <span className="cart-counter">
+                    <span className="cart-counter">
                       {cartItems == undefined ? 0 : cartItems.length}
-                    </span> */}
+                    </span>
                   </Nav.Link>
                 </LinkContainer>
               </>

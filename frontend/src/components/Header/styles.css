@@ -46,14 +46,16 @@
   left: 0;
   background-position: top center;
   background-size: 120% 170%;
-  background-position: top;
-  background-image: url(https://res.cloudinary.com/jordiespinoza/image/upload/v1625597308/daniel-fazio-oK9EKfqv8HE-unsplash_f2bwjr.jpg);
+  background-position: center;
+  background-image: url(https://res.cloudinary.com/jordiespinoza/image/upload/v1625620516/pat-whelen-KgaoJlk7cp8-unsplash_tro7ep.jpg);
   opacity: 0.5;
 }
 
-.header-page h2, .header-page Button {
+.header-page h2,
+.header-page h1,
+.header-page Button {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 3rem;
   position: relative;
 }
 
@@ -65,6 +67,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
@@ -84,10 +87,13 @@
 
 .categories-colection .categorie-item .info {
   padding: 5px;
+  display: block;
+  width: 40%;
 }
 
 .categories-colection .categorie-item .info span {
   font-size: 12px;
+  display: block;
 }
 
 .categories-colection .categorie-item .image-categorie {

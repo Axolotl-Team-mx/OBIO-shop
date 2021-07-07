@@ -1,5 +1,18 @@
-@font-face {font-family: "Gotham"; src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot"); src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff") format("woff"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.svg#Gotham") format("svg"); }
-.loading-div{
+@font-face {
+  font-family: "Gotham";
+  src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot");
+  src: url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/bd317adf74e5e7e564eb61ce9926cc6d.svg#Gotham")
+      format("svg");
+}
+.loading-div {
   min-height: 60vh;
   display: flex;
   align-items: center;
@@ -24,21 +37,24 @@
     left: 0;
     background-position: top center;
     background-size: 120% 170%;
-    background-position: top;
-    background-image: url(https://res.cloudinary.com/jordiespinoza/image/upload/v1625597308/daniel-fazio-oK9EKfqv8HE-unsplash_f2bwjr.jpg);
+    background-position: center;
+    background-image: url(https://res.cloudinary.com/jordiespinoza/image/upload/v1625620516/pat-whelen-KgaoJlk7cp8-unsplash_tro7ep.jpg);
     opacity: 0.5;
   }
-  h2, Button {
+  h2,
+  h1,
+  Button {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 3rem;
     position: relative;
   }
-  Button{
+  Button {
     font-size: 18px;
   }
 }
 .categories-colection {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 15px 0;
@@ -50,13 +66,16 @@
     margin: 10px;
     .info {
       padding: 5px;
-      span{
-          font-size: 12px;
+      display: block;
+      width: 40%;
+      span {
+        font-size: 12px;
+        display: block;
       }
     }
     .image-categorie {
-        min-height: 30vh;
-        width: 40vh;
+      min-height: 30vh;
+      width: 40vh;
       img {
         display: block;
         width: 100%;

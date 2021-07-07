@@ -6,7 +6,7 @@ import Message from "../../../components/Message";
 import FormContainer from "../../../components/FormContainer";
 
 import { Form, Button, Container } from "react-bootstrap";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import { actions } from "../../../constants/userConstants";
 import { callApi } from "../../../api";
@@ -69,9 +69,11 @@ export default function LoginScreen({ history }) {
                 ></Form.Control>
               </Form.Group>
               <span className="text-dark d-block text-center mt-4">
-          Si no cuentas con una cuenta registrate{" "}
-          <Link to="/register">aqui</Link>
-        </span>
+                Si no cuentas con una cuenta registrate{" "}
+                <Link to="/register" style={{ color: "#333" }}>
+                  aqui
+                </Link>
+              </span>
               <Button className="mb-2" type="submit" variant="primary">
                 Iniciar sesión
               </Button>

@@ -2,9 +2,13 @@ import { lazy } from "react";
 const HomeScreen = lazy(() => import("../../views/Store/HomeScreen"));
 const LoginScreen = lazy(() => import("../../views/Store/LoginScreen"));
 const RegisterScreen = lazy(() => import("../../views/Store/RegisterScreen"));
+const ProductsScreen = lazy(() => import("../../views/Store/ProductsScreen"));
 const RegisterBrand = lazy(() => import("../../views/Dashboard/RegisterBrand"));
 const RegisterProduct = lazy(() =>
   import("../../views/Dashboard/RegisterProduct")
+);
+const CartScreen = lazy(() =>
+  import("../../views/Store/CartScreen")
 );
 const ProductsList = lazy(() =>
   import("../../views/Dashboard/ProductsList")
@@ -55,6 +59,18 @@ const routes = [
     name: "product-screen",
     exact: true,
     component: ProductScreen,
+  },
+  {
+    path: "/products/",
+    name: "products",
+    exact: true,
+    component: ProductsScreen,
+  },
+  {
+    path: "/cart/:id?",
+    name: "cart",
+    exact: true,
+    component: CartScreen,
   },
 ];
 

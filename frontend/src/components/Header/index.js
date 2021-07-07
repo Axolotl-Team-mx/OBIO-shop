@@ -1,16 +1,15 @@
 import "./styles.css";
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 export default function Header() {
   return (
     <>
       <div className="header-page">
-        <h2>
-          Culpa adipisicing ipsum enim ea pariatur <br />
-          id mollit fugiat consectetur.
-        </h2>
-        <Button variant="secondary">Ver productos</Button>
+        <h1>Produciendo un mejor futuro</h1>
+        <Link to="/products">
+          <Button variant="secondary">Ver productos</Button>
+        </Link>
       </div>
-
     </>
   );
 }

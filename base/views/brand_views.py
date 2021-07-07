@@ -13,7 +13,6 @@ def getBrands(request):
         brands= Brand.objects.all()
         serializer =  BrandSerializer(brands, many=True)
         return Response(serializer.data)
-    
     except Exception as e:
         print('Error details: ' + ' ' + str(e))
         message = {'detail': 'Something bad happen'}

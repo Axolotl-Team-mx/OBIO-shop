@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -7,6 +8,7 @@ from base.models import Orders
 from base.serializers.order_serializers import OrdersSerealizer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import status
 
 
 @api_view(['GET'])
@@ -15,7 +17,6 @@ def getOrders(request):
         orders = Orders.objects.all()
         serializer = OrdersSerealizer(orders, many=True)
         return Response(serializer.data)
-    
      except Exception as e:
         print('Error details: ' + ' ' + str(e))
         message = {'detail': 'Something bad happen'}
@@ -49,10 +50,14 @@ def updateOrder(request, pk):
 def createOrder(request):
     try:
         data =  request.data
+        user = User.objects.get(id=data['usr'])
         order = Orders.objects.create(
-            orderName = data['name']
-            orderDate = data['date']
-            usrId = data['usr']
+            orderName = data['name'],
+            usrId = user,
+            city=data['city'],
+            street=data['street'],
+            zipcode = data['zipcode'],
+            country=data['country']
         )
         order.save()
         serializer = OrdersSerealizer(order, many=False)

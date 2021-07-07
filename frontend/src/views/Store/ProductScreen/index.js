@@ -14,6 +14,8 @@ import {
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
+import { FacebookIcon } from 'react-share'
+
 import Rating from "../../../components/Rating";
 
 import { Link } from "react-router-dom";
@@ -44,7 +46,11 @@ export default function ProductScreen({ history, match }) {
     success: successDetails,
     product,
   } = productDetails;
-
+  const addToCartHandler = (e) => {
+    userInfo
+      ? history.push(`/cart/${product.prodId}?qty=${1}`)
+      : history.push("/login");
+  };
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -148,6 +154,17 @@ export default function ProductScreen({ history, match }) {
             <Rating value={product?.rating} color="#d3a007" />
 
             <span>{product?.prodDesc}</span>
+            {/* <br/>
+            <FacebookIcon /> */}
+            <br/>
+            <Button
+              variant="success"
+              type="button"
+              onClick={addToCartHandler}
+              className="btn btn-primary"
+            >
+              Añadir al carro <i className="fas fa-shopping-cart"></i>
+            </Button>
           </Col>
           <Col md={3}>
             {userInfo ? (

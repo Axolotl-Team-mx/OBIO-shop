@@ -2,4 +2,16 @@ nav {
   background-color: #fff;
   border-bottom: 1px solid #ccc;
 }
+
+.cart-counter {
+  background-color: #ff6f4a;
+  color: #fff;
+  border-radius: 150px;
+  padding: 3px 7px;
+  position: relative;
+  top: -10px;
+  left: 0;
+  font-size: 15px;
+  font-family: sans-serif;
+}
 /*# sourceMappingURL=styles.css.map */
