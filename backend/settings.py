@@ -114,8 +114,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'apiObio',
-        'USER': 'apiObio',
-        'PASSWORD': 'uD*5QDK%Z84XUOct',
+        'USER': 'alvaro',
+        'PASSWORD': 'yRvR&!DZ#F9U&3aJ',
         'HOST': 'the.axolotlteam.com',
         'PORT': '3306',
     }
